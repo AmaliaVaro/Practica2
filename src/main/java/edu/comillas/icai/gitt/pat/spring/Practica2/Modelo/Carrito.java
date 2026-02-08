@@ -2,7 +2,6 @@ package edu.comillas.icai.gitt.pat.spring.Practica2.Modelo;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 //Los datos que se van a usar en la lógica
 public class Carrito {

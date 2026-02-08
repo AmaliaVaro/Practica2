@@ -13,30 +13,30 @@ import java.util.Map;
 public class CarritoControlador {
     private final Map<Integer, Carrito> carritos = new HashMap<>();
 
-    @PostMapping("/api/carritos") //Crea un carrito
-    @ResponseStatus(HttpStatus.CREATED) //Si se ha creado correctamente devuelve un 201
-    public Carrito creaCarrito(@Valid @RequestBody Carrito carrito) { //El requestbody permite convertir el JSON en un objeto de java.
-        carritos.put(carrito.getIdCarrito(), carrito); //añadimos el carrito creado al HashMap
+    @PostMapping("/api/carritos")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Carrito creaCarrito(@Valid @RequestBody Carrito carrito) {
+        carritos.put(carrito.getIdCarrito(), carrito);
         return carrito;
     }
 
-    @GetMapping("/api/carritos")//Quiero que devuelva todos los carritos que hay
+    @GetMapping("/api/carritos")
     public Collection<Carrito> getCarritos() {
         return carritos.values();
     }
 
-    @GetMapping("/api/carritos/{idCarrito}") //Quiero que me devuelva un carrito determinado
-    public Carrito getCarrito(@PathVariable int idCarrito) {//PathVariable nos permite extraer de la URL el idCarrito para poder devolver el indicado.
+    @GetMapping("/api/carritos/{idCarrito}")
+    public Carrito getCarrito(@PathVariable int idCarrito) {
         return carritos.get(idCarrito);
     }
 
-    @PutMapping("/api/carritos/{idCarrito}")//Para modificar algo del carrito, update
+    @PutMapping("/api/carritos/{idCarrito}")
     public Carrito modificarCarrito(@PathVariable int idCarrito, @Valid@RequestBody Carrito carrito){
         carritos.put(idCarrito, carrito);
         return carrito;
     }
 
-    @DeleteMapping("/api/carritos/{idCarrito}") //Para eliminar un carrito
+    @DeleteMapping("/api/carritos/{idCarrito}")
     public void borrarCarrito(@PathVariable int idCarrito) {
         carritos.remove(idCarrito);
     }
