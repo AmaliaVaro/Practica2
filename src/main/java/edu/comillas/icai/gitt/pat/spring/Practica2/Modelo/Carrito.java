@@ -1,10 +1,16 @@
 package edu.comillas.icai.gitt.pat.spring.Practica2.Modelo;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 //Los datos que se van a usar en la lógica
 public class Carrito {
     private int idCarrito;
     private int idArticulo;
+    @NotBlank(message = "La descripcion es obligatoria")
     private String descripcion;
+    @Min(1) //Para no poder crear un carrito con 0 unidades
     private int unidades;
     private double precioFinal;
 

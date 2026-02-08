@@ -1,6 +1,7 @@
 package edu.comillas.icai.gitt.pat.spring.Practica2.Controlador;
 
 import edu.comillas.icai.gitt.pat.spring.Practica2.Modelo.Carrito;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +15,7 @@ public class CarritoControlador {
 
     @PostMapping("/api/carritos") //Crea un carrito
     @ResponseStatus(HttpStatus.CREATED) //Si se ha creado correctamente devuelve un 201
-    public Carrito creaCarrito(@RequestBody Carrito carrito) { //El requestbody permite convertir el JSON en un objeto de java.
+    public Carrito creaCarrito(@Valid @RequestBody Carrito carrito) { //El requestbody permite convertir el JSON en un objeto de java.
         carritos.put(carrito.getIdCarrito(), carrito); //añadimos el carrito creado al HashMap
         return carrito;
     }
@@ -30,7 +31,7 @@ public class CarritoControlador {
     }
 
     @PutMapping("/api/carritos/{idCarrito}")//Para modificar algo del carrito, update
-    public Carrito modificarCarrito(@PathVariable int idCarrito, @RequestBody Carrito carrito){
+    public Carrito modificarCarrito(@PathVariable int idCarrito, @Valid@RequestBody Carrito carrito){
         carritos.put(idCarrito, carrito);
         return carrito;
     }
