@@ -1,5 +1,6 @@
 package edu.comillas.icai.gitt.pat.spring.Practica2.Modelo;
 
+//Los datos que se van a usar en la lógica
 public class Carrito {
     private int idCarrito;
     private int idArticulo;
